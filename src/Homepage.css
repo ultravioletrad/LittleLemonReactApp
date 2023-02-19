@@ -1,0 +1,31 @@
+.homepage-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows:  auto auto auto auto ;
+  grid-gap: 20px;
+  color: #F4CE14;
+ 
+}
+
+.component1{
+  align-content: center;
+  grid-column: 1 / -1;
+  grid-row: 1 ;
+}
+
+.component2 {
+  align-content: center;
+  grid-column: 2 / -2;
+  grid-row: 2 / 4;
+}
+
+.component3 {
+  align-content: center;
+  grid-column: 1 / -1;
+  grid-row: 4 ;
+}
+
+.component3 h1, .review h1 {
+  color: #495E57;
+  font-size: large;
+}

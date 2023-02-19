@@ -1,0 +1,36 @@
+.nav-container {
+  display: grid;
+  grid-column: 1 / -1; /* span all columns */
+  grid-row: 1 / 2; /* first row */
+  background: #edefee;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.nav-list {
+  display: grid;
+  grid-auto-flow: column;
+  list-style: none;
+  margin: 0;
+  justify-content: center;
+}
+
+.nav-item {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #495e57;
+  font-size: 18pt;
+  padding: 10px;
+}
+
+.logo {
+  padding-top: 20px; 
+  padding-right: 10px;
+}

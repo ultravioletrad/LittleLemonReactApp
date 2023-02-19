@@ -1,0 +1,17 @@
+.bookingPage{
+    display:grid;
+    grid-template-columns: auto ;
+    grid-auto-rows: auto auto auto auto;
+    gap:20px ;
+}
+
+
+.bookingform{
+  grid-column: 1 ;
+  grid-row: 2;
+  font-size: medium;
+  color: #F4CE14;
+  text-align:center;
+  background-color: #495e57;
+
+}

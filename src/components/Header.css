@@ -1,0 +1,18 @@
+.header {
+    background-color:#edefee;
+    display: grid;
+    align-items: center;
+    padding-left: 300px;
+    height: 10%vh;
+    padding-top:0.5%vh;
+    
+    
+    
+    
+}
+
+.logo {
+    object-position:left center;
+    padding-right: 200px;
+   
+}
