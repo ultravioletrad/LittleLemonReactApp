@@ -7,7 +7,7 @@ import Specials from './Menu';
 function Homepage() {
   return (
     <div className="homepage-container">
-      <div className="content-container">
+      <div className="components">
         <div className="component1">
           <Chicago />
         </div>

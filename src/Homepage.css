@@ -1,16 +1,18 @@
 .homepage-container {
   display: grid;
   grid-template-areas:
-    " chicago chicago"
-    "specials specials"
-    "reviews reviews";
-    grid-template-columns: 1fr 1fr;
+    " chicago chicago chicago chicago chicago"
+    "specials specials specials specials specials"
+    "reviews reviews reviews reviews reviews";
+    
+    grid-template-columns: repeat(5,1fr);
     grid-template-rows: auto auto auto auto auto;
-    grid-gap: 20px;
     color: #F4CE14;
-    overflow: auto;
+    align-content: center;
+    place-content: space-evenly;
+    
+    
 }
-
 .component1 {
   grid-area: chicago;
 }
@@ -26,7 +28,7 @@
 
 @media screen and (min-width: 768px) {
   .homepage-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -41,34 +43,3 @@
 
 
 
-/* styles for smallest screens */
-@media (max-width: 375px) {
-  .navbar {
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    order: 2;
-    width: 100%;
-  }
-
-  .menu-toggle {
-    order: 1;
-    margin-bottom: 10px;
-  }
-
-  .menu {
-    order: 3;
-    width: 100%;
-    display: none;
-  }
-
-  .menu.open {
-    display: block;
-  }
-
-  .menu li {
-    display: block;
-    margin: 10px 0;
-  }
-}
