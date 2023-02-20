@@ -58,9 +58,9 @@ const BookingForm = () => {
   }
 
   return (
-    <div className="booking-form">
+    <div className="form">
       <form onSubmit={formik.handleSubmit}>
-        <div className="booking-form__row">
+        <div className="form-group">
           <label htmlFor="first-name">
             <span className="label-icon">👤</span>First Name
           </label>
@@ -70,13 +70,12 @@ const BookingForm = () => {
             name="firstName"
             value={formik.values.firstName}
             onChange={formik.handleChange}
-            onBlur={handleBlur}
-          />
+            onBlur={handleBlur}/>
           {formik.touched.firstName && formik.errors.firstName ? (
             <span className="error">{formik.errors.firstName}</span>
           ) : null}
         </div>
-        <div className="booking-form__row">
+        <div className="form-group">
           <label htmlFor="last-name">
             <span className="label-icon">👤</span>Last Name
           </label>
@@ -86,13 +85,12 @@ const BookingForm = () => {
             name="lastName"
             value={formik.values.lastName}
             onChange={formik.handleChange}
-            onBlur={handleBlur}
-          />
+            onBlur={handleBlur}/>
           {formik.touched.lastName && formik.errors.lastName ? (
             <span className="error">{formik.errors.lastName}</span>
           ) : null}
         </div>
-        <div className="booking-form__row">
+        <div className="form-group">
           <label htmlFor="email">
             <span className="label-icon">📧</span>Email
           </label>
@@ -102,13 +100,12 @@ const BookingForm = () => {
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
-            onBlur={handleBlur}
-          />
+            onBlur={handleBlur}/>
           {formik.touched.email && formik.errors.email ? (
             <span className="error">{formik.errors.email}</span>
           ) : null}
         </div>
-        <div className="booking-form__row">
+        <div className="form-group">
           <label htmlFor="date">
             <span className="label-icon">📅</span>Date
           </label>
@@ -118,17 +115,17 @@ const BookingForm = () => {
             name="date"
             value={formik.values.date}
             onChange={formik.handleChange}
-            onBlur={handleBlur}
-          />
+            onBlur={handleBlur}/>
           {formik.touched.date && formik.errors.date ? (
             <span className="error">{formik.errors.date}</span>
           ) : null}
         </div>
-        <div className="booking-form__row">
+        <div className="form-group">
           <label htmlFor="time">
             <span className="label-icon">🕔</span>Time
           </label>
           <select
+            type="time"
             id="time"
             name="time"
             value={formik.values.time}
@@ -140,11 +137,12 @@ const BookingForm = () => {
             <option value="20:00">8:00 PM</option>
             </select>
             </div>
-          <div className="booking-form__row">
+          <div className="form-group">
           <label htmlFor="occasion">
           <span className="label-icon">🎉</span>Occasion
           </label>
           <select
+                  type="text"
                   id="occasion"
                   name="occasion"
                   value={formik.values.occasion}
@@ -159,7 +157,7 @@ const BookingForm = () => {
           <span className="error">{formik.errors.occasion}</span>
           ) : null}
           </div>
-          <div className="booking-form__row">
+          <div className="form-group">
           <label htmlFor="guests">
           <span className="label-icon">👥</span>Number of Guests
           </label>
@@ -175,7 +173,7 @@ const BookingForm = () => {
           <span className="error">{formik.errors.guests}</span>
           ) : null}
           </div>
-          <div className="booking-form__row">
+          <div className="form-group">
           <button type="submit" className="submit-button">
           Submit
           </button>

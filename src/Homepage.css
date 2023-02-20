@@ -1,11 +1,28 @@
 .homepage-container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto;
-  grid-gap: 20px;
-  color: #F4CE14;
-  overflow: auto; /* add this line */
+  grid-template-areas:
+    " chicago chicago"
+    "specials specials"
+    "reviews reviews";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-gap: 20px;
+    color: #F4CE14;
+    overflow: auto;
 }
+
+.component1 {
+  grid-area: chicago;
+}
+
+.component2 {
+  grid-area: specials;
+}
+
+.component3 {
+  grid-area: reviews;
+}
+
 
 @media screen and (min-width: 768px) {
   .homepage-container {
@@ -15,27 +32,14 @@
 
 @media screen and (min-width: 1024px) {
   .homepage-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto auto;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .container {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+
+
+
+
 
 /* styles for smallest screens */
 @media (max-width: 375px) {
