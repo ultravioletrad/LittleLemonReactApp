@@ -1,4 +1,3 @@
-
 import React, { useReducer } from "react";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -7,16 +6,15 @@ import About from "../About";
 import Menu from "../Menu";
 import OrderOnline from "../OrderOnline";
 import Login from "../Login";
-import BookingForm from "./BookingForm";
+import BookingPage from "./BookingPage";
+import BookingFormConfirmation from "./BookingFormConfirmation";
 import Nav from "./Nav";
 import Reservations from '../Reservations'
-
-
-
-
+import { fetchAPI, submitAPI } from "./Api.js";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
-
+  
   const [availableTimes, setAvailableTimes] = useState([
     "12:00",
     "12:30",
@@ -33,32 +31,50 @@ const Main = () => {
   };
   const [state, dispatch] = useReducer(updateTimes, initialState,() =>
   initializeTimes("default date"));
-  
-  
+
   function updateTimes(state, action) {
     switch (action.type) {
-      case 'updateTimes':
+      case 'UPDATE_TIMES':
+        const availableTimes = fetchAPI(new Date(action.selectedDate));
         return {
           ...state,
           selectedDate: action.selectedDate,
-          availableTimes: availableTimes
+          availableTimes
         };
       default:
         return state;
     }
   }
   
+
   function initializeTimes(selectedDate) {
+    const today = new Date(selectedDate);
+    const formattedDate = today.toLocaleDateString();
+    const availableTimes = fetchAPI(today);
     return {
       type: "UPDATE_TIMES",
-      selectedDate,
+      selectedDate: formattedDate,
       availableTimes
     };
   }
- 
+  const navigate = useNavigate();
+
+  function submitForm(formData) {
+    submitAPI(formData)
+      .then(response => {
+        if (response) {
+          navigate('/BookingFormConfirmation');
+        } else {
+          throw new Error('Failed to submit form');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
   
+
   return (
-    
     <main className="App">
       <Nav/>
       <Routes>
@@ -68,10 +84,10 @@ const Main = () => {
         <Route path="/Reservations" element={<Reservations />} />
         <Route path="/OrderOnline" element={<OrderOnline />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Reservations" element={<BookingForm state={state} dispatch={dispatch} availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />} />
+        <Route path="/Reservations" element={<BookingPage submitForm={submitForm} state={state} dispatch={dispatch} availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />}/>
+        <Route path="/BookingConfirmation" element={<BookingFormConfirmation />} />
       </Routes>
     </main>
-
   );
 };
 

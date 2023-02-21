@@ -7,7 +7,7 @@ import chef from "./icons_assets/restaurant chef B.jpg"
 import food from "./icons_assets/restauranfood.jpg"
 import './BookingPage.css';
 
-const BookingPage = (props) => {
+const BookingPage = ({ submitForm, state, dispatch, availableTimes, setAvailableTimes }) => {
   const [bookingSlots, setBookingSlots] = useState([
     { time: '12:00 PM', availability: 'Available' },
     { time: '1:00 PM', availability: 'Booked' },
@@ -19,12 +19,19 @@ const BookingPage = (props) => {
   const toggleBookingSlots = () => {
     setShowBookingSlots(!showBookingSlots);
   }
+
   return (
     <div className="bookingpage-container">
       <div className="booking-page">
-        <form className="booking-form">
-          <BookingForm />
-        </form>
+        <div className="booking-form">
+        <BookingForm 
+          state={state} 
+          dispatch={dispatch} 
+          availableTimes={availableTimes} 
+          setAvailableTimes={setAvailableTimes} 
+          submitForm={submitForm}
+          />
+          </div>
         <div className="menu-item">
                 <img src={restaurant} alt="dish1" className="menu-item-image" />
                 <img src={chef} alt="dish1" className="menu-item-image" />

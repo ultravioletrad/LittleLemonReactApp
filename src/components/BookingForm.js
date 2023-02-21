@@ -7,7 +7,9 @@ import BookingFormConfirmation from "./BookingFormConfirmation";
 import { useNavigate } from 'react-router-dom'; // import useNavigate hook
 import './BookingForm.css';
 
-const BookingForm = () => {
+const BookingForm = (props) => {
+  console.log(props);
+  const [submitted, setSubmitted] = useState(false);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -34,31 +36,42 @@ const BookingForm = () => {
         .required("Required"),
     }),
     onSubmit: (values, { setSubmitted }) => {
+      props.submitForm(values);
+      console.log("Form submitted with values: ", values);
       setSubmitted(true);
       handleBookingForm();
-      formik.handleSubmit();
+      
     },
     
     
   });
   const handleBlur = (e) => {
     formik.handleBlur(e);
-    if (e.target.value.trim() === '') {
+    if (formik.touched[e.target.name] && !formik.errors[e.target.name]) {
+      e.target.classList.remove("error-input");
+    } else if (e.target.value.trim() === '') {
       e.target.classList.add("error-input");
+    } else {
+      e.target.classList.remove("error-input");
     }
+    console.log("Field blurred: ", e.target.name);
   };
-  const [submitted, setSubmitted] = useState(false);
+  
+  
   // define submit function
+  
   const navigate = useNavigate(); // initialize useNavigate hook
   const handleBookingForm = () => {
-    navigate('/BookingFormConfirmation');
+    navigate('/BookingFormConfirmation'); 
   };
-  if (submitted) {
-    return <BookingFormConfirmation />;
-  }
+  
+  
 
   return (
     <div className="form">
+    {submitted ? (
+      <BookingFormConfirmation handleBookingForm={handleBookingForm} />
+    ) : (
       <form onSubmit={formik.handleSubmit}>
         <div className="form-group">
           <label htmlFor="first-name">
@@ -179,6 +192,7 @@ const BookingForm = () => {
           </button>
           </div>
           </form>
+          )}
           </div>
           );
           }
