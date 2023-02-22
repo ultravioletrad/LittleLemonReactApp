@@ -56,16 +56,12 @@ const BookingForm = (props) => {
     }
     console.log("Field blurred: ", e.target.name);
   };
-  
-  
-  // define submit function
-  
+
   const navigate = useNavigate(); // initialize useNavigate hook
   const handleBookingForm = () => {
     navigate('/BookingFormConfirmation'); 
   };
-  
-  
+
 
   return (
     <div className="form">

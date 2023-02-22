@@ -8,6 +8,12 @@ import food from "./icons_assets/restauranfood.jpg"
 import './BookingPage.css';
 
 const BookingPage = ({ submitForm, state, dispatch, availableTimes, setAvailableTimes }) => {
+  console.log(submitForm);
+  console.log(state);
+  console.log(dispatch);
+  console.log(availableTimes);
+  console.log(setAvailableTimes);
+
   const [bookingSlots, setBookingSlots] = useState([
     { time: '12:00 PM', availability: 'Available' },
     { time: '1:00 PM', availability: 'Booked' },
@@ -19,7 +25,7 @@ const BookingPage = ({ submitForm, state, dispatch, availableTimes, setAvailable
   const toggleBookingSlots = () => {
     setShowBookingSlots(!showBookingSlots);
   }
-
+  
   return (
     <div className="bookingpage-container">
       <div className="booking-page">

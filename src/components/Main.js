@@ -29,36 +29,37 @@ const Main = () => {
     selectedDate: "",
     availableTimes: availableTimes
   };
-  const [state, dispatch] = useReducer(updateTimes, initialState,() =>
-  initializeTimes("default date"));
+  const [state, dispatch] = useReducer(updateTimes, initializeTimes("default date"));
 
-  function updateTimes(state, action) {
-    switch (action.type) {
+
+  function initializeTimes() {
+    const today = new Date();
+    const availableTimes = fetchAPI(today);
+    return {
+      type: "UPDATE_TIMES",
+      selectedDate: today.toLocaleDateString(),
+      availableTimes
+    };
+  }
+  
+  function updateTimes(state = {}, action = {}) {
+    const { selectedDate, type } = action;
+    const { availableTimes } = state;
+    
+    switch (type) {
       case 'UPDATE_TIMES':
-        const availableTimes = fetchAPI(new Date(action.selectedDate));
         return {
           ...state,
-          selectedDate: action.selectedDate,
-          availableTimes
+          selectedDate,
+          availableTimes: fetchAPI(new Date(selectedDate))
         };
       default:
         return state;
     }
   }
   
-
-  function initializeTimes(selectedDate) {
-    const today = new Date(selectedDate);
-    const formattedDate = today.toLocaleDateString();
-    const availableTimes = fetchAPI(today);
-    return {
-      type: "UPDATE_TIMES",
-      selectedDate: formattedDate,
-      availableTimes
-    };
-  }
   const navigate = useNavigate();
-
+  
   function submitForm(formData) {
     submitAPI(formData)
       .then(response => {
@@ -72,10 +73,17 @@ const Main = () => {
         console.error(error);
       });
   }
+  console.log("availableTimes:", availableTimes);
+  console.log("dispatch:", dispatch);
+  console.log("setAvailableTimes:", setAvailableTimes);
+  console.log("state:", state);
+  console.log("submitForm:", submitForm);
   
 
   return (
+    
     <main className="App">
+      <div data-testid="main-component">This is the Main component.</div>;
       <Nav/>
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -92,3 +100,4 @@ const Main = () => {
 };
 
 export default Main;
+export { updateTimes };

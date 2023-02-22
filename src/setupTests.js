@@ -11,6 +11,6 @@ import BookingForm from './components/BookingForm';
 
 test('Renders the BookingForm heading', () => {
     render(<BookingForm />);
-    const headingElement = screen.getByText("resrvation");
+    const headingElement = screen.getByText("reservation");
     expect(headingElement).toBeInTheDocument();
 })
