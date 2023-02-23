@@ -6,10 +6,34 @@ import * as Yup from "yup";
 import BookingFormConfirmation from "./BookingFormConfirmation";
 import { useNavigate } from 'react-router-dom'; // import useNavigate hook
 import './BookingForm.css';
+import { fetchAPI, submitAPI } from './Api';
 
 const BookingForm = (props) => {
   console.log(props);
   const [submitted, setSubmitted] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [availableTimes, setAvailableTimes] = useState([
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+  ]);
+  const handleSubmit = (formData) => {
+    const success = submitAPI(formData);
+    if (success) {
+      console.log('Form submitted successfully');
+      navigate('/BookingFormConfirmation', { state: { formData } });
+    } else {
+      console.log('Form submission failed');
+    }
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    const times = fetchAPI(date);
+    setAvailableTimes(times);
+  };
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -35,8 +59,9 @@ const BookingForm = (props) => {
         .max(10, "Must be 10 or less")
         .required("Required"),
     }),
-    onSubmit: (values, { setSubmitted }) => {
+    onSubmit: (values) => {
       props.submitForm(values);
+      handleSubmit(values);
       console.log("Form submitted with values: ", values);
       setSubmitted(true);
       handleBookingForm();
@@ -66,7 +91,7 @@ const BookingForm = (props) => {
   return (
     <div className="form">
     {submitted ? (
-      <BookingFormConfirmation handleBookingForm={handleBookingForm} />
+      <BookingFormConfirmation formData={formik.values} handleBookingForm={handleBookingForm} />
     ) : (
       <form onSubmit={formik.handleSubmit}>
         <div className="form-group">
@@ -123,29 +148,34 @@ const BookingForm = (props) => {
             id="date"
             name="date"
             value={formik.values.date}
-            onChange={formik.handleChange}
+            onChange={(e) => {
+              formik.handleChange(e);
+              handleDateChange(e.target.value);
+            }}
             onBlur={handleBlur}/>
           {formik.touched.date && formik.errors.date ? (
             <span className="error">{formik.errors.date}</span>
           ) : null}
         </div>
         <div className="form-group">
-          <label htmlFor="time">
-            <span className="label-icon">🕔</span>Time
-          </label>
-          <select
-            type="time"
-            id="time"
-            name="time"
-            value={formik.values.time}
-            onChange={formik.handleChange}
-            onBlur={handleBlur}>
-            <option value="17:00">5:00 PM</option>
-            <option value="18:00">6:00 PM</option>
-            <option value="19:00">7:00 PM</option>
-            <option value="20:00">8:00 PM</option>
+            <label htmlFor="time">
+              <span className="label-icon">🕔</span>Time
+            </label>
+            <select
+              id="time"
+              name="time"
+              value={formik.values.time}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              {availableTimes.map((time, index) => (
+                <option key={index} value={time}>
+                  {time}
+                </option>
+              ))}
             </select>
-            </div>
+          </div>
+
           <div className="form-group">
           <label htmlFor="occasion">
           <span className="label-icon">🎉</span>Occasion

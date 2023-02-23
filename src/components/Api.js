@@ -10,7 +10,7 @@ const seededRandom = function (seed) {
 
 export const fetchAPI = function(date) {
     let result = [];
-    let random = seededRandom(date.getDate());
+    let random = seededRandom(new Date(date).getDate());
 
     for(let i = 17; i <= 23; i++) {
         if(random() < 0.5) {
@@ -23,6 +23,24 @@ export const fetchAPI = function(date) {
     return result;
 };
 
-export const submitAPI = function(formData) {
-    return true;
-};
+/*export async function submitAPI(formData) {
+    try {
+      const response = await fetch('https://example.com/submit', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      return data.success;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }*/
+  export async function submitAPI(formData) {
+    return true; // Return true to indicate successful submission
+  }
+  
+  

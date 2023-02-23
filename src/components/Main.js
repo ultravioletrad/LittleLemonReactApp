@@ -12,6 +12,7 @@ import Nav from "./Nav";
 import Reservations from '../Reservations'
 import { fetchAPI, submitAPI } from "./Api.js";
 import { useNavigate } from "react-router-dom";
+import { Formik, FormikConsumer } from "formik";
 
 const Main = () => {
   
@@ -29,20 +30,22 @@ const Main = () => {
     selectedDate: "",
     availableTimes: availableTimes
   };
-  const [state, dispatch] = useReducer(updateTimes, initializeTimes("default date"));
+  const [state, dispatch] = useReducer(updateTimes, initializeTimes(new Date()));
+;
 
 
-  function initializeTimes() {
-    const today = new Date();
-    const availableTimes = fetchAPI(today);
+  function initializeTimes(defaultDate) {
+    const selectedDate = defaultDate || new Date();
+    const availableTimes = fetchAPI(selectedDate);
     return {
       type: "UPDATE_TIMES",
-      selectedDate: today.toLocaleDateString(),
+      selectedDate: selectedDate.toLocaleDateString(),
       availableTimes
     };
   }
   
-  function updateTimes(state = {}, action = {}) {
+  
+ function updateTimes(state = {}, action = {}) {
     const { selectedDate, type } = action;
     const { availableTimes } = state;
     
@@ -59,15 +62,13 @@ const Main = () => {
   }
   
   const navigate = useNavigate();
-  
+  const [formData, setFormData] = useState({});
   function submitForm(formData) {
     submitAPI(formData)
       .then(response => {
         if (response) {
-          navigate('/BookingFormConfirmation');
-        } else {
-          throw new Error('Failed to submit form');
-        }
+          navigate('/BookingFormConfirmation', { state: { formData } });
+        } 
       })
       .catch(error => {
         console.error(error);
@@ -81,23 +82,20 @@ const Main = () => {
   
 
   return (
-    
+    /* <div data-testid="main-component">This is the Main component.</div>;*/
     <main className="App">
-      <div data-testid="main-component">This is the Main component.</div>;
       <Nav/>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/About" element={<About />} />
         <Route path="/Menu" element={<Menu />} />
-        <Route path="/Reservations" element={<Reservations />} />
         <Route path="/OrderOnline" element={<OrderOnline />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Reservations" element={<BookingPage submitForm={submitForm} state={state} dispatch={dispatch} availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />}/>
-        <Route path="/BookingConfirmation" element={<BookingFormConfirmation />} />
+        <Route path="/BookingFormConfirmation" element={<BookingFormConfirmation setFormData={setFormData}/>} />
       </Routes>
     </main>
   );
 };
 
 export default Main;
-export { updateTimes };
