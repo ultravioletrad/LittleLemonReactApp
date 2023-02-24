@@ -12,9 +12,8 @@ const BookingFormConfirmation = (props) => {
 
   return (
     <div className="form">
-      <span className="title"></span>
-      <h1>Booking has been confirmed</h1>
-      <h2>Here are the details of your booking:</h2>
+      <span className="title"></span>Booking has been confirmed
+      <h1>Here are the details of your booking:</h1>
       
       <div className="form-group">
       <label htmlFor="first-name">

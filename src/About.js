@@ -17,7 +17,7 @@ function About(){
             <img src={restaurant} className="item-image" alt="chef with food"/>
             <button className="item-button" onClick={handleReservationClick}>Reserve a Table</button>
           </div>
-    );
+    );gi
 
 }
 export default About;

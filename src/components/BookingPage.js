@@ -30,6 +30,7 @@ const BookingPage = ({ submitForm, state, dispatch, availableTimes, setAvailable
     <div className="bookingpage-container">
       <div className="booking-page">
         <div className="booking-form">
+        <h1>For reservation fill the form below!</h1>  
         <BookingForm 
           state={state} 
           dispatch={dispatch} 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Specials from "./Menu";
+import './OrderOnline.css'
 
 function OrderOnline() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -23,7 +24,7 @@ function OrderOnline() {
   };
 
   return (
-    <div>
+    <div className="OnlineOrder">
       <h1>Welcome to Little Lemon Order Online page, please select the menu items!</h1>
       <Specials handleCheckboxChange={handleCheckboxChange} />
       <form onSubmit={handleSubmit}>

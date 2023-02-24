@@ -50,6 +50,15 @@
   font-weight: bold;
   
 }
+.booking-page h1{
+  font-size: 1.5rem;
+  font-weight:lighter;
+  text-align: center;
+  color: #F4CE14;
+  font-weight: bold;
+  
+}
+
 .booking-page h2{
   font-size: 18px;
   font-weight:lighter;

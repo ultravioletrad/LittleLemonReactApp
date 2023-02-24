@@ -4,6 +4,7 @@
   grid-template-rows: auto auto auto auto auto ;
   place-content: center;
   height: fit-content;
+  margin-left: 5ch;
   
 }
 .menu-items {
@@ -19,6 +20,7 @@
   grid-column: 1 / -1;
   grid-row: 1;
   text-align: center;
+  color:#F4ce14
 }
 
 .menu-button {
@@ -58,7 +60,7 @@
   grid-column:1;
   grid-row: 2;
   font-size: 16pt;
-  color: #495E57;
+  color: #F4ce14;
  
 }
 
