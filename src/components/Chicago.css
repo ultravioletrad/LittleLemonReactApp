@@ -4,65 +4,60 @@
    grid-template-rows: auto auto auto auto ;  
    place-items: center;
    background-color:#495e57;
- 
+   
 }
 
-.title {
+
+.chicago-container h1{
+
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    color: #F4CE14;
+    font-size: 3rem;
+    text-align:right ;
+    
+}
+.chicago-container h2{
+    grid-column: 2;
+    grid-row: 2;
+    color:#edefee;
+    font-size:1.5rem;
+    text-align:top;
+    
+
+}
+
+
+.chicago-container p {
  display: grid;
- grid-column: 1;
- grid-row: 1;
- color: #F4CE14;
- font-size: 5rem;
- align-self:end ;
-}
-
-
-.sub-title {
- grid-column:2;
- grid-row: 2;
- color:#edefee;
- font-size:medium ;
- align-content: center;
- font-weight: bolder;
-}
-
-.item-description {
- display: grid;
- grid-column: 1;
+ grid-column: 3;
  grid-row:3;
  color: #edefee;
  background-color: #495e57;
- text-align: center;
- font-size: large;
- font-weight:bold;
+ text-align: top left;
+ font-size: 1.75rem;
+ 
+
 }
 
-.item-image {
- grid-column: 3/-1;
+.chicago-container img {
+ grid-column: 4;
  grid-row: 3 ;
  justify-self: center;
- height: 20vh;
- width: 12vw;
+ height: 30ch;
+ width: 25ch;
  border-radius: 16px;
  align-self: center;
+
  
 }
 
 
-.logo2 {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: left;
-  align-self: left;
-  height:5ch;
-  width:5ch;
-  border: solid #edefee;
 
-  
- }
-.item-button {
- grid-column: 1;
- grid-row:3;
+.chicago-container button {
+ grid-column: 4;
+ grid-row:4;
  font-size: large;
  font-weight: bold;
  background-color: #F4CE14;

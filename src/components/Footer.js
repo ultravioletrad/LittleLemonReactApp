@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer">
-      <div data-testid="footer-component">This is the Footer component.</div>;
+      
       <div className="footer__navigation">
         <ul>
           <li><a href="#">Home</a></li>
@@ -32,3 +32,4 @@ function Footer() {
 }
 
 export default Footer;
+//<div data-testid="footer-component">This is the Footer component.</div>;
