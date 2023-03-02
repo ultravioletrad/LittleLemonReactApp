@@ -46,7 +46,7 @@ const BookingPage = ({ submitForm, state, dispatch, availableTimes, setAvailable
                 </div>
         <h2>
           Booking Slots{" "}
-          <button className="toggle-booking-slots" onClick={toggleBookingSlots}>
+          <button className="toggle-booking-slots" aria-label="On Click" onClick={toggleBookingSlots}>
             {showBookingSlots ? "Hide" : "Show"}
           </button>
         </h2>

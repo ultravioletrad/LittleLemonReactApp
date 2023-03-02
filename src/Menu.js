@@ -13,7 +13,7 @@ function Menu(){
     return(
         <div className="menu-container">
         <h1 className="menu-title">This Week's Specials</h1>
-        <button className="menu-button">Online Menu</button>
+        <button className="menu-button" >Online Menu</button>
         <div className="menu-items">
             <div className="menu-item">
                 <img src={greeksalad} alt="dish1" className="menu-item-image" style={{height:'200px' ,width:'200px'}}/>
@@ -21,7 +21,7 @@ function Menu(){
                 <p className="menu-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <div className='price-button'>
                 <p className="menu-item-price">$10.99</p>
-                <button className="menu-item-button" onClick={handleAddToCart}>Add to Cart</button> {/* add onClick event */}
+                <button className="menu-item-button" aria-label="On Click" onClick={handleAddToCart}>Add to Cart</button> 
           </div>
             
             </div>
@@ -31,7 +31,7 @@ function Menu(){
                 <p className="menu-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <div className='price-button'>
                 <p className="menu-item-price">$10.99</p>
-                <button className="menu-item-button" onClick={handleAddToCart}>Add to Cart</button> {/* add onClick event */}
+                <button className="menu-item-button" aria-label="On Click" onClick={handleAddToCart}>Add to Cart</button> {/* add onClick event */}
           </div>
             </div>
             <div className="menu-item">
@@ -40,7 +40,7 @@ function Menu(){
                 <p className="menu-item-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <div className='price-button'>
                 <p className="menu-item-price">$10.99</p>
-                <button className="menu-item-button" onClick={handleAddToCart}>Add to Cart</button> {/* add onClick event */}
+                <button className="menu-item-button" aria-label="On Click" onClick={handleAddToCart}>Add to Cart</button> {/* add onClick event */}
           </div>
                 
             </div>

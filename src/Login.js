@@ -12,7 +12,7 @@ function Login(){
              Password:
              <input type="password" name="password" />
             </label>
-            <button type="Submit">Submit</button>
+            <button type="Submit" aria-label="On Click" >Submit</button>
         </form>
         </div>
         );

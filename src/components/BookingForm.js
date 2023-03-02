@@ -213,7 +213,7 @@ const BookingForm = (props) => {
           ) : null}
           </div>
           <div className="form-group">
-          <button type="submit" className="submit-button">
+          <button type="submit" className="submit-button" aria-label="On Click">
           Submit
           </button>
           </div>

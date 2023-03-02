@@ -46,7 +46,7 @@ const BookingFormConfirmation = (props) => {
           <span className="label-icon">👥</span>Number of Guests
           </label>{formData.guests}
         </div>
-      <button onClick={handleBackButtonClick}>Back to booking form</button>
+      <button aria-label="On Click" onClick={handleBackButtonClick}>Back to booking form</button>
     </div>
   );
 };
